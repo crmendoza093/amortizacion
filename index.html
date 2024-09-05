@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Jose Estrada">
+  <meta name="description" content="Simulador de préstamos">
+  <meta name="keywords" content="simulador, prestamos">
+  
+  <script src="script.js" defer></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
+  <!-- DataTables FixedHeader JS -->
+  <script src="https://cdn.datatables.net/fixedheader/4.0.1/js/dataTables.fixedHeader.js"></script>
+  <!-- DataTables JS -->
+  <!-- <script src="https://cdn.datatables.net/fixedheader/4.0.1/js/fixedHeader.dataTables.js"></script> -->
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.dataTables.css">
+  <!-- DataTables FixedHeader CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/4.0.1/css/fixedHeader.dataTables.css">
+  <link rel="stylesheet" href="prestamos.css">
+  <!-- DataTables Buttons CSS y JS -->
+<script src="https://cdn.datatables.net/buttons/3.1.2/js/dataTables.buttons.js"></script>
+<!-- <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.dataTables.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.html5.min.js"></script>
+  <title>Simulador de Préstamos</title>
+</head>
+<body>
+<div id="contenedor">
+  <div class="header">
+    <h2>Solicitud de préstamo</h2>
+  </div>
+  <div name="frmSolicitudPrestamo" id="frmSolicitudPrestamo">
+    <div class="control">
+      <label for="monto">Monto: <input type="text" name="monto" id="monto" placeholder="monto" maxlength="16"></label>
+    </div>
+    <div class="control">
+      <label for="interes">Interés (anual): <input type="text" name="interes" id="interes" placeholder="interés" maxlength="5"></label>
+    </div>
+    <div class="control">
+      <label for="plazo">Plazo (Años):
+        <!-- Cambiar el input de plazo a un combobox -->
+        <select name="plazo" id="plazo">
+          <!-- Agregar opciones para diferentes plazos -->
+          <option value="1">1</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </label>
+    </div>
+
+      <!-- Selector de Periodo ubicado arriba de la tabla, sin depender del botón de cálculo -->
+    <div class="control">
+      <label>Periodo:
+        <select name="tipoPlazo" id="tipoPlazo">
+          <option value="mensual">Mensual</option>
+          <option value="anual">Anual</option>
+        </select>
+      </label>
+    </div>
+    
+    <!-- Botón para calcular la simulación -->
+    <button id="simular">Simular préstamo</button>
+  </div>
+</div>
+
+<div id="contenedorTabla">
+  <div class="header">
+    <h2>Tabla de amortizaciones</h2>
+  </div>
+
+  <!-- Contenedor para la tabla de amortizaciones -->
+  <table id="tablaAmortizacion" class="display" width="100%"></table>
+</div>
+</body>
+</html>
