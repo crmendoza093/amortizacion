@@ -1,222 +1,115 @@
 @import url('https://fonts.googleapis.com/css?family=DM+Sans&display=swap');
 
-/* * {
-  box-sizing: border-box;
-} */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+}
 
 body {
-  background: linear-gradient(to right, royalblue, darkblue);
-  font-family: 'DM Sans', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(to right, royalblue, darkblue);
+    color: #333;
 }
 
-#contenedor, #contenedorTabla {
-  background-color: #FFF;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  width: 300px;
-  max-width: 100%;
-  margin: 20px;
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 10px;
+    padding: 20px;
+    flex-grow: 1;
+    max-width: 1300px;
+    margin: auto;
+    font-family: inherit;
+    margin-top: 5rem;
 }
 
-#contenedorTabla {
-  width: 1000px;
-  height: 600px; /* Altura estática igual al formulario */
-  overflow-y: scroll;
-  background-color: #FFF; /* Color blanco cuando no haya datos */
-  text-align: center;
+.column {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 600px;
+    overflow: auto;
 }
 
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-::-webkit-scrollbar-track {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+/* Estilos para los controles de formulario */
+.control {
+    margin-bottom: 15px;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: royalblue;
+p {
+    font-size: 14px;
+    margin: 2px;
+    color: gray;
+    font-style: italic;
+}
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-.header, thead {
-  border-bottom: 1px solid #F0F0F0;
-  background-color: #F7F7F7;
-  padding: 20px 40px;
+input[type="text"]:focus,
+select:focus {
+    border-color: #3498db;
+    outline: none;
 }
 
-.header h2 {
-  margin: 0;
-}
-
-#frmSolicitudPrestamo {
-  padding: 30px 40px;
-  height: auto; /* Restaurar altura automática */
-}
-
-#frmSolicitudPrestamo .control, .control, .radios {
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-  position: relative;
-}
-
-#amortizaciones {
-  text-align: center;
-}
-
-#frmSolicitudPrestamo .control label {
-  margin-bottom: 5px;
-}
-
-#frmSolicitudPrestamo .control input, #frmSolicitudPrestamo .control select, #tipoPlazo {
-  border: 2px solid #F0F0F0;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 14px;
-  padding: 10px;
-  width: 100%;
-}
-
-#frmSolicitudPrestamo .control input:focus {
-  outline: 0;
-  border-color: royalblue;
-}
-
-#frmSolicitudPrestamo button {
-  background: rgba(65, 105, 225, 90%);
-  border: 2px solid royalblue;
-  border-radius: 4px;
-  color: #FFF;
-  font-family: inherit;
-  font-size: medium;
-  padding: 10px;
-  margin-top: 20px;
-  width: 100%;
-}
-
+/* Estilo del botón */
 button {
-  background: rgba(65, 105, 225, 90%);
-  border: 2px solid royalblue;
-  border-radius: 4px;
-  color: #FFF;
-  font-family: inherit;
-  font-size: medium;
-  padding: 10px;
-  margin: 10px;
-  width: 100%;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#tablaAmortizacion {
-  border: 2px solid royalblue;
-  border-collapse: collapse;
-  border-radius: 4px;
-  width: 100%;
-  font-family: inherit;
-  font-size: 0.9em;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  height: 100%; /* Ocupa toda la altura del contenedor */
-  background-color: #FFF; /* Color blanco mientras no tenga datos */
-  text-align: center;
-  margin: 10px;
+button:hover {
+    background-color: #2980b9;
 }
 
-#tablaAmortizacion thead tr {
-  background: royalblue;
-  color: white;
-  text-align: left;
-  font-weight: bold;
-  height: 39px;
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    color: #333;
+    margin-top: auto;
 }
 
-#tablaAmortizacion thead tr th {
-  text-align: center;
+footer a {
+    color: #3498db;
+    text-decoration: none;
 }
 
-#tablaAmortizacion thead, td {
-  padding: 12px 15px;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Single column layout on smaller screens */
+    }
 
-#tablaAmortizacion tbody tr {
-  border-bottom: 1px solid #F0F0F0;
-  text-align: center;
-}
-
-#tablaAmortizacion tbody tr:nth-last-of-type(even) {
-  background-color: #F3F3F3;
-}
-
-#tablaAmortizacion tbody tr:last-of-type {
-  border-bottom: 2px solid royalblue;
-}
-
-#tablaAmortizacion tbody tr:hover {
-  color: white;
-  background: rgba(65, 105, 225, 90%);
-}
-
-#tablaAmortizacion tfoot {
-  background: royalblue;
-  color: white;
-}
-
-.radios {
-  padding: 10px 20px;
-}
-
-.radioContenedor {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-  padding-left: 30px;
-  margin: 10px;
-}
-
-.radioContenedor input {
-  display: none;
-}
-
-.radioContenedor .circle {
-  left: 0;
-  top: 0;
-  width: 25px;
-  height: 25px;
-  border-radius: 50px;
-  position: absolute;
-  display: inline-block;
-  background-color: rgba(65, 105, 225, 90%);
-  border-bottom: 2px solid royalblue;
-}
-
-.radioContenedor:hover .circle {
-  background-color: royalblue;
-}
-
-.radioContenedor input:checked + .circle {
-  background-color: royalblue;
-}
-
-.radioContenedor input:checked + .circle:after {
-  content: '';
-  height: 10px;
-  width: 10px;
-  background-color: white;
-  position: absolute;
-  border-radius: 50%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+    .column {
+        max-height: none; /* Remove max-height for better content fitting */
+    }
 }
